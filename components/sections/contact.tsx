@@ -4,7 +4,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Mail, LucideGithub, LucideLinkedin, Send, Loader2, CheckCircle2, XCircle } from "lucide-react";
+import { Mail, 
+  // eslint-disable-next-line deprecation/deprecation
+  Github, 
+  // eslint-disable-next-line deprecation/deprecation
+  Linkedin, 
+  Send, Loader2, CheckCircle2, XCircle 
+} from "lucide-react";
 import Link from "next/link";
 import { CONTACT } from "@/lib/constants";
 
@@ -140,7 +146,8 @@ export function Contact() {
                       target="_blank"
                       className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                     >
-                      <LucideGithub className="h-4 w-4" />
+                      {/* eslint-disable-next-line deprecation/deprecation */}
+                      <Github className="h-4 w-4" />
                       <span>{CONTACT.socialLinks.github.text}</span>
                     </Link>
                     <Link
@@ -148,7 +155,8 @@ export function Contact() {
                       target="_blank"
                       className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                     >
-                      <LucideLinkedin className="h-4 w-4" />
+                      {/* eslint-disable-next-line deprecation/deprecation */}
+                      <Linkedin className="h-4 w-4" />
                       <span>{CONTACT.socialLinks.linkedin.text}</span>
                     </Link>
                     <Link

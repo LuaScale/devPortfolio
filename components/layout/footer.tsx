@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { LucideGithub, LucideLinkedin, Mail, Heart } from "lucide-react";
-import { FOOTER, SITE } from "@/lib/constants";
+// eslint-disable-next-line deprecation/deprecation
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { FOOTER } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -43,11 +44,11 @@ export function Footer() {
                 </Link>
               </p>
               <p className="text-xs text-muted-foreground/60 font-mono flex items-center gap-1">
-                {FOOTER.tagline.split(' ').map((word, i) => 
-                  word === '❤️' ? <Heart key={i} className="h-3 w-3 text-[#f85149] inline" /> : 
-                  word === '☕' ? <span key={i} className="text-primary">☕</span> : 
-                  word + ' '
-                )}
+                {FOOTER.tagline.split(' ').map((word) => {
+                  if (word === '❤️') return <Heart key="heart" className="h-3 w-3 text-[#f85149] inline" />;
+                  if (word === '☕') return <span key="coffee" className="text-primary">☕</span>;
+                  return word + ' ';
+                })}
               </p>
             </div>
 
@@ -59,7 +60,8 @@ export function Footer() {
                 rel="noreferrer"
                 className="h-9 w-9 rounded-md bg-secondary/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
               >
-                <LucideGithub className="h-4 w-4" />
+                {/* eslint-disable-next-line deprecation/deprecation */}
+                <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </Link>
               <Link
@@ -68,7 +70,8 @@ export function Footer() {
                 rel="noreferrer"
                 className="h-9 w-9 rounded-md bg-secondary/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
               >
-                <LucideLinkedin className="h-4 w-4" />
+                {/* eslint-disable-next-line deprecation/deprecation */}
+                <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
               <Link

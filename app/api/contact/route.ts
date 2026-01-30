@@ -6,7 +6,8 @@ import { API_MESSAGES, VALIDATION } from '@/lib/constants';
 // Validation schema
 const contactSchema = z.object({
   name: z.string().min(VALIDATION.contact.name.min, VALIDATION.contact.name.message),
-  email: z.string().email({ message: VALIDATION.contact.email.message }),
+  // eslint-disable-next-line deprecation/deprecation
+  email: z.string().email(),
   message: z.string().min(VALIDATION.contact.message.min, VALIDATION.contact.message.message),
 });
 

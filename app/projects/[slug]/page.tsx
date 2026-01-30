@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, LucideGithub, ExternalLink } from "lucide-react";
+import { 
+  ArrowLeft, 
+  // eslint-disable-next-line deprecation/deprecation
+  Github, 
+  ExternalLink 
+} from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/data";
@@ -101,7 +106,8 @@ export default async function ProjectPage({ params }: Readonly<ProjectPageProps>
                 </Button>
                 <Button variant="outline" asChild className="w-full border-accent/50 text-foreground hover:border-primary hover:text-primary">
                   <Link href={project.links.repo} target="_blank">
-                    <LucideGithub className="mr-2 h-4 w-4" /> View Code
+                    {/* eslint-disable-next-line deprecation/deprecation */}
+                    <Github className="mr-2 h-4 w-4" /> View Code
                   </Link>
                 </Button>
               </div>

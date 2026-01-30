@@ -56,8 +56,8 @@ export function About() {
                     <p>building <span className="text-accent">{ABOUT.bio.passion}</span> applications.</p>
                     <p>&nbsp;</p>
                     <p className="text-[#8b949e]">{ABOUT.bio.currentWork.title}</p>
-                    {ABOUT.bio.currentWork.items.map((item, i) => (
-                      <p key={i}>- {item}</p>
+                    {ABOUT.bio.currentWork.items.map((item) => (
+                      <p key={item}>- {item}</p>
                     ))}
                     <p>&nbsp;</p>
                     <p className="text-[#8b949e]">{ABOUT.bio.callToAction[0]}</p>

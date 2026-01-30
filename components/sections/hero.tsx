@@ -8,7 +8,7 @@ import { ArrowRight, Terminal, GitBranch, Code2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { HERO } from "@/lib/constants";
 
-function TypingText({ text, className }: { text: string; className?: string }) {
+function TypingText({ text, className }: Readonly<{ text: string; className?: string }>) {
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
 
@@ -113,7 +113,7 @@ export function Hero() {
             className="flex flex-wrap gap-3 mb-10"
           >
             <div className="inline-flex items-center gap-2 rounded-md border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm text-primary">
-              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />{' '}
               Available for hire
             </div>
             <div className="inline-flex items-center gap-2 rounded-md border border-border bg-secondary/50 px-3 py-1.5 text-sm text-muted-foreground">

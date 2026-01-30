@@ -35,13 +35,13 @@ export function Experience() {
           <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-border" />
 
           <div className="space-y-8">
-            {experiences.map((experience, index) => (
+            {experiences.map((experience, idx) => (
               <motion.div
-                key={index}
+                key={`${experience.company}-${experience.role}`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="relative pl-12"
               >
                 {/* Commit node */}
@@ -57,7 +57,7 @@ export function Experience() {
                   <div className="px-4 py-3 bg-secondary/30 border-b border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <GitBranch className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-mono text-sm text-accent">{experience.company.toLowerCase().replace(/\s+/g, '-')}</span>
+                      <span className="font-mono text-sm text-accent">{experience.company.toLowerCase().replaceAll(/\s+/g, '-')}</span>
                     </div>
                     <span className="font-mono text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
                       {experience.period}

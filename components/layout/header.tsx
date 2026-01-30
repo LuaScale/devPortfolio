@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+// eslint-disable-next-line deprecation/deprecation
 import * as lucideReact from "lucide-react";
 import { NAV_ITEMS, NAV_CTA, SITE } from "@/lib/constants";
 
@@ -75,13 +76,15 @@ export function Header() {
               <ThemeToggle />
               <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary hover:bg-secondary/50">
                 <Link href={SITE.github} target="_blank">
-                  <lucideReact.LucideGithub className="h-5 w-5" />
+                  {/* eslint-disable-next-line deprecation/deprecation */}
+                  <lucideReact.Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary hover:bg-secondary/50">
                 <Link href={SITE.linkedin} target="_blank">
-                  <lucideReact.LucideLinkedin className="h-5 w-5" />
+                  {/* eslint-disable-next-line deprecation/deprecation */}
+                  <lucideReact.Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
                 </Link>
               </Button>
@@ -139,12 +142,14 @@ export function Header() {
                   <ThemeToggle />
                   <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary">
                     <Link href="https://github.com/LuaScale" target="_blank">
-                      <lucideReact.LucideGithub className="h-5 w-5" />
+                      {/* eslint-disable-next-line deprecation/deprecation */}
+                      <lucideReact.Github className="h-5 w-5" />
                     </Link>
                   </Button>
                   <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary">
                     <Link href="https://linkedin.com/in/jules-vandeneede" target="_blank">
-                      <lucideReact.LucideLinkedin className="h-5 w-5" />
+                      {/* eslint-disable-next-line deprecation/deprecation */}
+                      <lucideReact.Linkedin className="h-5 w-5" />
                     </Link>
                   </Button>
                   <Button className="flex-1 font-mono" asChild>

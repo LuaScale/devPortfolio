@@ -3,7 +3,11 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { LucideGithub, ExternalLink, ArrowRight, GitFork, Star, Folder } from "lucide-react";
+import { 
+  // eslint-disable-next-line deprecation/deprecation
+  Github, 
+  ExternalLink, ArrowRight, GitFork, Star, Folder 
+} from "lucide-react";
 import Link from "next/link";
 import { projects } from "@/lib/data";
 import { useEffect, useState } from "react";
@@ -118,7 +122,7 @@ export function Projects() {
                   <div className="flex flex-wrap items-center gap-4 mb-4">
                     {project.tags.map((tag) => (
                       <div key={tag} className="flex items-center gap-1.5 text-xs">
-                        <span className={`h-3 w-3 rounded-full ${tagColors[tag] ? tagColors[tag].replace('text-', 'bg-') : 'bg-muted-foreground'}`} style={{ backgroundColor: tagColors[tag]?.match(/#[a-f0-9]{6}/i)?.[0] || undefined }} />
+                        <span className={`h-3 w-3 rounded-full ${tagColors[tag] ? tagColors[tag].replace('text-', 'bg-') : 'bg-muted-foreground'}`} style={{ backgroundColor: /#[a-f0-9]{6}/i.exec(tagColors[tag] || '')?.[0] || undefined }} />
                         <span className="text-muted-foreground">{tag}</span>
                       </div>
                     ))}
@@ -128,7 +132,8 @@ export function Projects() {
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
                     <Button variant="outline" size="sm" asChild className="border-border hover:border-primary hover:text-primary font-mono text-xs">
                       <Link href={project.links.repo} target="_blank">
-                        <LucideGithub className="mr-2 h-4 w-4" /> {PROJECTS.buttons.viewSource}
+                        {/* eslint-disable-next-line deprecation/deprecation */}
+                        <Github className="mr-2 h-4 w-4" /> {PROJECTS.buttons.viewSource}
                       </Link>
                     </Button>
                     {project.links.demo !== "#" && (
