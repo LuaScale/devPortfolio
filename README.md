@@ -57,10 +57,8 @@ npm install
 
 3. **Configure environment variables**
 ```bash
-# Copy the example env file
 cp .env.local.example .env.local
 
-# Edit .env.local and add your SMTP credentials
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
@@ -68,7 +66,6 @@ SMTP_PASS=your-app-password
 EMAIL_FROM=your-email@gmail.com
 EMAIL_TO=your-email@gmail.com
 
-# Optional: Add GitHub token for higher API rate limits
 GITHUB_TOKEN=your_github_token
 ```
 
@@ -198,7 +195,6 @@ export const projects = [
     },
     image: "/project-image.jpg",
   },
-  // Add more projects...
 ]
 ```
 
@@ -208,7 +204,6 @@ Edit `app/globals.css` to customize theme colors:
 @theme {
   --color-primary: #00ff88;
   --color-accent: #ff6b6b;
-  /* Customize other colors... */
 }
 ```
 
