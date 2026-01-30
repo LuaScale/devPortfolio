@@ -33,7 +33,7 @@ jobs:
         with:
           images: ${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=latest
             type=sha,prefix=sha-
 
       - name: Build and push Docker image
