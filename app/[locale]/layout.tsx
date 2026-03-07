@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { SidebarNav } from "@/components/layout/sidebar-nav";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { PortfolioPreloader } from "@/components/portfolio-preloader";
+import AsciiCursor from "@/components/ascii-cursor";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -51,21 +54,36 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
+    <NextIntlClientProvider messages={messages}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <PortfolioPreloader>
+          {/* ASCII cursor trail — hidden on touch/mobile devices */}
+          <div
+            className="fixed inset-0 pointer-events-none z-50 hidden md:block"
+            aria-hidden="true"
           >
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+            <AsciiCursor
+              characters="✶✷$☺✦☉∗ϟ▵.;."
+              color="#4ade80"
+              backgroundColor="#000000"
+              size={24}
+              spread={18}
+              persistence={2}
+              opacity={0.55}
+              enableFade
+            />
+          </div>
+          <Header />
+          <SidebarNav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </PortfolioPreloader>
+      </ThemeProvider>
+    </NextIntlClientProvider>
   );
 }

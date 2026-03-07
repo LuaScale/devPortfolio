@@ -12,6 +12,7 @@ import { Mail,
   Send, Loader2, CheckCircle2, XCircle 
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import StaggeredText from "@/components/staggered-text";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -76,9 +77,16 @@ export function Contact() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="text-primary font-mono text-sm">{t("number")}</span>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {t("title")}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={t("title")}
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              segmentBy="words"
+              delay={60}
+              duration={0.5}
+              direction="top"
+              blur
+            />
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
         </motion.div>

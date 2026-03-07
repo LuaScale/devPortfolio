@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import StaggeredText from "@/components/staggered-text";
 import { Container } from "@/components/ui/container";
 import { experiences, getLocalizedData } from "@/lib/data";
 import { GitCommit, GitBranch } from "lucide-react";
@@ -22,9 +23,16 @@ export function Experience() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="text-primary font-mono text-sm">{t("number")}</span>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {t("title")}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={t("title")}
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              segmentBy="words"
+              delay={60}
+              duration={0.5}
+              direction="top"
+              blur
+            />
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
           <p className="text-lg text-muted-foreground font-mono">

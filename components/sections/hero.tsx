@@ -7,6 +7,7 @@ import { Link } from "@/i18n/routing";
 import { ArrowRight, Terminal, GitBranch, Code2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import AsciiWaves from "@/components/ascii-waves";
 
 function TypingText({ text, className }: Readonly<{ text: string; className?: string }>) {
   const [displayText, setDisplayText] = useState("");
@@ -44,12 +45,23 @@ export function Hero() {
   const t = useTranslations("hero");
   
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden py-20 md:py-32 bg-background">
-      {/* Code-inspired grid background */}
+    <section id="hero" className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden py-20 md:py-32 bg-background">
+      {/* ASCII waves background — interactive, cursor-reactive */}
       <div className="absolute inset-0 -z-10 h-full w-full">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#30363d_1px,transparent_1px),linear-gradient(to_bottom,#30363d_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-[128px]" />
-        <div className="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-accent/5 blur-[128px]" />
+        <AsciiWaves
+          characters=" .:-=+*#"
+          color="#4ade80"
+          intensity={0.25}
+          speed={0.4}
+          elementSize={22}
+          noiseScale={1.8}
+          waveTension={0.35}
+          waveTwist={0.08}
+          interactionIntensity={1.2}
+          className="opacity-30"
+        />
+        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-[128px] pointer-events-none" />
+        <div className="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-accent/5 blur-[128px] pointer-events-none" />
       </div>
 
       <Container>
