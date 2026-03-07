@@ -3,6 +3,9 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+# Upgrade npm to match the version used to generate package-lock.json
+RUN npm install -g npm@11
+
 # Copy package files and install dependencies
 COPY package.json package-lock.json ./
 RUN npm ci
