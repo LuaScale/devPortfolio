@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import StaggeredText from "@/components/staggered-text";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { 
@@ -10,27 +11,9 @@ import {
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { projects, getLocalizedData } from "@/lib/data";
+import { TAG_COLORS } from "@/lib/constants";
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-
-const tagColors: Record<string, string> = {
-  "PHP": "text-[#777bb4]",
-  "Symfony": "text-foreground",
-  "REST API": "text-[#22d3ee]",
-  "Doctrine": "text-[#f59e0b]",
-  "MySQL": "text-[#00758f]",
-  "JWT": "text-[#d63aff]",
-  "TypeScript": "text-[#3178c6]",
-  "React": "text-[#61dafb]",
-  "React Native": "text-[#61dafb]",
-  "Next.js": "text-foreground",
-  "Node.js": "text-[#68a063]",
-  "Microservices": "text-[#a78bfa]",
-  "Mobile": "text-[#f472b6]",
-  "UX/UI": "text-[#f59e0b]",
-  "Dashboard": "text-[#22d3ee]",
-  "Admin": "text-[#f87171]",
-};
 
 export function Projects() {
   const [githubStats, setGithubStats] = useState<Record<string, { stars: number; forks: number }>>({});
@@ -71,9 +54,16 @@ export function Projects() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="text-primary font-mono text-sm">{t("number")}</span>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {t("title")}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={t("title")}
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              segmentBy="words"
+              delay={60}
+              duration={0.5}
+              direction="top"
+              blur
+            />
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl font-mono">
@@ -127,7 +117,7 @@ export function Projects() {
                   <div className="flex flex-wrap items-center gap-4 mb-4">
                     {project.tags.map((tag: string) => (
                       <div key={tag} className="flex items-center gap-1.5 text-xs">
-                        <span className={`h-3 w-3 rounded-full ${tagColors[tag] ? tagColors[tag].replace('text-', 'bg-') : 'bg-muted-foreground'}`} style={{ backgroundColor: /#[a-f0-9]{6}/i.exec(tagColors[tag] || '')?.[0] || undefined }} />
+                        <span className="h-3 w-3 rounded-full" style={{ backgroundColor: TAG_COLORS[tag]?.text ?? '#e5e5e5' }} />
                         <span className="text-muted-foreground">{tag}</span>
                       </div>
                     ))}

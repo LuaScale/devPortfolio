@@ -218,6 +218,28 @@ export const CONTACT = {
 } as const;
 
 // ============================================================================
+// TAG COLORS
+// ============================================================================
+export const TAG_COLORS: Record<string, { text: string; bg: string }> = {
+  PHP:            { text: "#977dd6", bg: "#977dd615" },
+  Symfony:        { text: "#b0b0b0", bg: "#b0b0b015" },
+  "REST API":     { text: "#22d3ee", bg: "#22d3ee15" },
+  Doctrine:       { text: "#f59e0b", bg: "#f59e0b15" },
+  MySQL:          { text: "#3d9fba", bg: "#3d9fba15" },
+  JWT:            { text: "#d63aff", bg: "#d63aff15" },
+  TypeScript:     { text: "#3b82f6", bg: "#3b82f615" },
+  React:          { text: "#61dafb", bg: "#61dafb15" },
+  "React Native": { text: "#61dafb", bg: "#61dafb15" },
+  "Next.js":      { text: "#e5e5e5", bg: "#e5e5e515" },
+  "Node.js":      { text: "#68a063", bg: "#68a06315" },
+  Microservices:  { text: "#a78bfa", bg: "#a78bfa15" },
+  Mobile:         { text: "#f472b6", bg: "#f472b615" },
+  "UX/UI":        { text: "#f59e0b", bg: "#f59e0b15" },
+  Dashboard:      { text: "#22d3ee", bg: "#22d3ee15" },
+  Admin:          { text: "#f87171", bg: "#f8717115" },
+};
+
+// ============================================================================
 // FOOTER
 // ============================================================================
 export const FOOTER = {
