@@ -2,10 +2,15 @@
   "nav": {
     "logo": "jules@dev:~$",
     "items": {
+      "hero": "hero",
       "projects": "projects",
       "about": "about",
       "experience": "experience",
       "contact": "contact"
+    },
+    "pages": {
+      "home": "home",
+      "projects": "projects"
     },
     "cta": "./hire-me"
   },
@@ -67,6 +72,8 @@
     "fileTab": "about.md",
     "bio": {
       "greeting": "# Hello World!",
+      "iAm": "I'm a",
+      "basedIn": "based in",
       "role": "Full Stack Developer",
       "location": "Lille, France",
       "intro": "I'm a passionate developer who loves building",
@@ -185,5 +192,31 @@
     "name": "Name must be at least 2 characters",
     "email": "Invalid email address",
     "message": "Message must be at least 10 characters"
+  },
+  "projectsPage": {
+    "command": "ls -la ~/projects",
+    "eyebrow": "// my work",
+    "title": "What I've Built",
+    "titleSuffix": "so far",
+    "subtitle": "A collection of projects spanning full-stack web, REST APIs, and mobile applications.",
+    "stats": {
+      "projects": "Projects",
+      "technologies": "Technologies",
+      "openSource": "Open Source"
+    },
+    "viewSource": "View Source",
+    "viewDemo": "Live Demo",
+    "readMore": "Read More",
+    "techSection": {
+      "command": "cat languages.json",
+      "title": "Technologies Used"
+    },
+    "cta": {
+      "command": "open https://github.com/LuaScale",
+      "title": "See Everything on GitHub",
+      "tagline": "it's there for it",
+      "subtitle": "Browse all my repositories, contributions, and open source work.",
+      "button": "View GitHub Profile"
+    }
   }
 }

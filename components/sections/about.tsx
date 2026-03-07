@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import StaggeredText from "@/components/staggered-text";
 import { Container } from "@/components/ui/container";
 import { FileCode } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -20,9 +21,16 @@ export function About() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="text-primary font-mono text-sm">{t("number")}</span>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {t("title")}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={t("title")}
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+              segmentBy="words"
+              delay={60}
+              duration={0.5}
+              direction="top"
+              blur
+            />
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
         </motion.div>
@@ -53,8 +61,8 @@ export function About() {
                   <div className="flex-1 text-muted-foreground leading-relaxed">
                     <p className="text-[#ff7b72]">{t("bio.greeting")}</p>
                     <p>&nbsp;</p>
-                    <p>I&apos;m a <span className="text-primary">{t("bio.role")}</span></p>
-                    <p>based in {t("bio.location")}, {t("bio.intro")}</p>
+                    <p>{t("bio.iAm")} <span className="text-primary">{t("bio.role")}</span></p>
+                    <p>{t("bio.basedIn")} {t("bio.location")}, {t("bio.intro")}</p>
                     <p><span className="text-accent">{t("bio.highlight")}</span> {t("bio.outro")}</p>
                     <p>&nbsp;</p>
                     <p className="text-[#8b949e]">{t("bio.currentlyWorking")}</p>

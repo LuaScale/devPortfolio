@@ -2,10 +2,15 @@
   "nav": {
     "logo": "jules@dev:~$",
     "items": {
+      "hero": "accueil",
       "projects": "projets",
       "about": "à propos",
       "experience": "expérience",
       "contact": "contact"
+    },
+    "pages": {
+      "home": "accueil",
+      "projects": "projets"
     },
     "cta": "./embauchez-moi"
   },
@@ -67,9 +72,11 @@
     "fileTab": "about.md",
     "bio": {
       "greeting": "# Bonjour le Monde !",
+      "iAm": "Je suis",
+      "basedIn": "basé à",
       "role": "Développeur Full Stack",
       "location": "Lille, France",
-      "intro": "Je suis un développeur passionné qui aime créer des applications web",
+      "intro": "développeur passionné qui aime créer des applications web",
       "highlight": "évolutives",
       "outro": "et performantes.",
       "currentlyWorking": "/* Actuellement en train de travailler sur */",
@@ -135,7 +142,7 @@
       "position": "Ln 420, Col 69"
     },
     "branding": "// Conçu & Développé par Jules Van Den Eede",
-    "tagline": "Fait avec ❤️ et beaucoup de ☕",
+    "tagline": "Fait avec ❤️",
     "copyright": "© 2026 Jules Van Den Eede. Tous droits réservés."
   },
   "notFound": {
@@ -185,5 +192,31 @@
     "name": "Le nom doit contenir au moins 2 caractères",
     "email": "Adresse email invalide",
     "message": "Le message doit contenir au moins 10 caractères"
+  },
+  "projectsPage": {
+    "command": "ls -la ~/projets",
+    "eyebrow": "// mon travail",
+    "title": "Ce Que J'ai Construit",
+    "titleSuffix": "pour l'instant",
+    "subtitle": "Une collection de projets couvrant le web full-stack, les APIs REST et les applications mobiles.",
+    "stats": {
+      "projects": "Projets",
+      "technologies": "Technologies",
+      "openSource": "Open Source"
+    },
+    "viewSource": "Voir le Code",
+    "viewDemo": "Démo en Direct",
+    "readMore": "En Savoir Plus",
+    "techSection": {
+      "command": "cat languages.json",
+      "title": "Technologies Utilisées"
+    },
+    "cta": {
+      "command": "open https://github.com/LuaScale",
+      "title": "Tout Voir sur GitHub",
+      "tagline": "c'est fait pour ça",
+      "subtitle": "Parcourez tous mes dépôts, contributions et travaux open source.",
+      "button": "Voir le Profil GitHub"
+    }
   }
 }
