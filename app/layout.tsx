@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import type { ReactNode } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,34 +12,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-
-export const metadata: Metadata = {
-  title: "Jules Van Den Eede | Portfolio",
-  description: "Portfolio of Jules Van Den Eede - Full Stack Developer",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground flex flex-col`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

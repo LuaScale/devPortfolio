@@ -11,8 +11,7 @@ import { Mail,
   Linkedin, 
   Send, Loader2, CheckCircle2, XCircle 
 } from "lucide-react";
-import Link from "next/link";
-import { CONTACT } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -62,6 +61,9 @@ export function Contact() {
       [e.target.name]: e.target.value,
     }));
   };
+  
+  const t = useTranslations("contact");
+  
   return (
     <section id="contact" className="py-20 md:py-32 bg-background">
       <Container>
@@ -73,9 +75,9 @@ export function Contact() {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-primary font-mono text-sm">{CONTACT.sectionNumber}.</span>
+            <span className="text-primary font-mono text-sm">{t("number")}</span>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {CONTACT.title}
+              {t("title")}
             </h2>
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
@@ -97,15 +99,14 @@ export function Contact() {
                   <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
                   <span className="h-3 w-3 rounded-full bg-[#27ca40]" />
                 </div>
-                <span className="text-xs text-muted-foreground font-mono ml-2">contact.sh</span>
+                <span className="text-xs text-muted-foreground font-mono ml-2">{t("terminalFile")}</span>
               </div>
 
               {/* Terminal content */}
               <div className="p-4 md:p-6 font-mono text-sm space-y-4">
                 <div>
                   <span className="text-primary">❯</span>
-                  <span className="text-[#ff7b72] ml-2">cat</span>
-                  <span className="text-muted-foreground ml-2">~/contact.json</span>
+                  <span className="text-[#ff7b72] ml-2">{t("command")}</span>
                 </div>
 
                 <div className="pl-4 text-muted-foreground">
@@ -113,59 +114,61 @@ export function Contact() {
                   <p className="pl-4">
                     <span className="text-[#a5d6ff]">&quot;status&quot;</span>
                     <span>: </span>
-                    <span className="text-primary">&quot;Available for hire&quot;</span>
+                    <span className="text-primary">&quot;{t("json.status")}&quot;</span>
                     <span>,</span>
                   </p>
                   <p className="pl-4">
                     <span className="text-[#a5d6ff]">&quot;location&quot;</span>
                     <span>: </span>
-                    <span className="text-[#ffa657]">&quot;Lille, France&quot;</span>
+                    <span className="text-[#ffa657]">&quot;{t("json.location")}&quot;</span>
                     <span>,</span>
                   </p>
                   <p className="pl-4">
                     <span className="text-[#a5d6ff]">&quot;email&quot;</span>
                     <span>: </span>
-                    <span className="text-[#ffa657]">&quot;julesvandeneedepro@gmail.com&quot;</span>
+                    <span className="text-[#ffa657]">&quot;{t("json.email")}&quot;</span>
                     <span>,</span>
                   </p>
                   <p className="pl-4">
                     <span className="text-[#a5d6ff]">&quot;response_time&quot;</span>
                     <span>: </span>
-                    <span className="text-[#ffa657]">&quot;~24h&quot;</span>
+                    <span className="text-[#ffa657]">&quot;{t("json.responseTime")}&quot;</span>
                   </p>
-                  <p>{"}"}</p>
+                  <p>{"}"}  </p>
                 </div>
 
                 <div className="pt-4 border-t border-border">
                   <p className="text-muted-foreground mb-4">
-                    {CONTACT.description}
+                    {t("description")}
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    <Link
-                      href={CONTACT.socialLinks.github.href}
+                    <a
+                      href="https://github.com/LuaScale"
                       target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                     >
                       {/* eslint-disable-next-line deprecation/deprecation */}
                       <Github className="h-4 w-4" />
-                      <span>{CONTACT.socialLinks.github.text}</span>
-                    </Link>
-                    <Link
-                      href={CONTACT.socialLinks.linkedin.href}
+                      <span>{t("social.github")}</span>
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/jules-vandeneede"
                       target="_blank"
+                      rel="noreferrer"
                       className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                     >
                       {/* eslint-disable-next-line deprecation/deprecation */}
                       <Linkedin className="h-4 w-4" />
-                      <span>{CONTACT.socialLinks.linkedin.text}</span>
-                    </Link>
-                    <Link
-                      href={CONTACT.socialLinks.email.href}
+                      <span>{t("social.linkedin")}</span>
+                    </a>
+                    <a
+                      href="mailto:julesvandeneedepro@gmail.com"
                       className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
                     >
                       <Mail className="h-4 w-4" />
-                      <span>{CONTACT.socialLinks.email.text}</span>
-                    </Link>
+                      <span>{t("social.email")}</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -183,14 +186,14 @@ export function Contact() {
               {/* Form header */}
               <div className="flex items-center gap-2 px-4 py-2 bg-secondary/50 border-b border-border">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-xs text-muted-foreground font-mono">{CONTACT.form.header}</span>
+                <span className="text-xs text-muted-foreground font-mono">{t("form.header")}</span>
               </div>
 
               <form onSubmit={handleSubmit} className="p-4 md:p-6 space-y-4">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-xs font-mono text-muted-foreground">
-                      <span className="text-[#ff7b72]">const</span> {CONTACT.form.labels.name} <span className="text-muted-foreground/60">=</span>
+                      <span className="text-[#ff7b72]">const</span> {t("form.labels.name")} <span className="text-muted-foreground/60">=</span>
                     </label>
                     <input
                       id="name"
@@ -200,12 +203,12 @@ export function Contact() {
                       required
                       disabled={status === "loading"}
                       className="flex h-10 w-full rounded-md border border-border bg-secondary/30 px-3 py-2 text-sm font-mono placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                      placeholder={CONTACT.form.placeholders.name}
+                      placeholder={t("form.placeholders.name")}
                     />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-xs font-mono text-muted-foreground">
-                      <span className="text-[#ff7b72]">const</span> {CONTACT.form.labels.email} <span className="text-muted-foreground/60">=</span>
+                      <span className="text-[#ff7b72]">const</span> {t("form.labels.email")} <span className="text-muted-foreground/60">=</span>
                     </label>
                     <input
                       id="email"
@@ -216,14 +219,14 @@ export function Contact() {
                       required
                       disabled={status === "loading"}
                       className="flex h-10 w-full rounded-md border border-border bg-secondary/30 px-3 py-2 text-sm font-mono placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                      placeholder={CONTACT.form.placeholders.email}
+                      placeholder={t("form.placeholders.email")}
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-xs font-mono text-muted-foreground">
-                    <span className="text-[#ff7b72]">const</span> {CONTACT.form.labels.message} <span className="text-muted-foreground/60">=</span> {"`"}
+                    <span className="text-[#ff7b72]">const</span> {t("form.labels.message")} <span className="text-muted-foreground/60">=</span> {"`"}
                   </label>
                   <textarea
                     id="message"
@@ -233,7 +236,7 @@ export function Contact() {
                     required
                     disabled={status === "loading"}
                     className="flex min-h-[120px] w-full rounded-md border border-border bg-secondary/30 px-3 py-2 text-sm font-mono placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder={CONTACT.form.placeholders.message}
+                    placeholder={t("form.placeholders.message")}
                   />
                   <span className="text-xs font-mono text-muted-foreground">{"`"}</span>
                 </div>
@@ -248,7 +251,7 @@ export function Contact() {
                 {status === "success" && (
                   <div className="flex items-center gap-2 p-3 rounded-md bg-primary/10 border border-primary/20 text-primary text-sm">
                     <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
-                    <span>{CONTACT.form.messages.success}</span>
+                    <span>{t("form.success")}</span>
                   </div>
                 )}
 
@@ -260,18 +263,18 @@ export function Contact() {
                   {status === "loading" ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      {CONTACT.form.button.loading}
+                      {t("form.sending")}
                     </>
                   ) : (
                     <>
                       <Send className="mr-2 h-4 w-4" />
-                      {CONTACT.form.button.idle}
+                      {t("form.button")}
                     </>
                   )}
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center font-mono">
-                  <span className="text-[#8b949e]">{CONTACT.form.messages.footer}</span>
+                  <span className="text-[#8b949e]">{t("form.footer")}</span>
                 </p>
               </form>
             </div>

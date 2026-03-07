@@ -1,0 +1,189 @@
+{
+  "nav": {
+    "logo": "jules@dev:~$",
+    "items": {
+      "projects": "projets",
+      "about": "à propos",
+      "experience": "expérience",
+      "contact": "contact"
+    },
+    "cta": "./embauchez-moi"
+  },
+  "hero": {
+    "terminal": {
+      "title": "~/jules-vandeneede",
+      "command": "whoami",
+      "output": "Jules Van Den Eede — Développeur Full Stack"
+    },
+    "comment": "//",
+    "headline": {
+      "part1": "Je crée des expériences web ",
+      "highlight": "évolutives",
+      "part2": ""
+    },
+    "description": "Développeur full-stack passionné, spécialisé dans la création d'expériences numériques exceptionnelles. Actuellement concentré sur la création d'applications web évolutives avec des technologies modernes.",
+    "status": {
+      "available": "Disponible à l'embauche",
+      "branch": "main",
+      "language": "TypeScript"
+    },
+    "cta": {
+      "work": "Voir Mes Projets",
+      "contact": "Me Contacter"
+    }
+  },
+  "projects": {
+    "number": "01.",
+    "title": "Projets Sélectionnés",
+    "command": "git log --oneline --graph",
+    "badge": "Public",
+    "buttons": {
+      "source": "Voir le Code",
+      "demo": "Démo en Direct",
+      "readme": "README.md"
+    },
+    "loading": "—",
+    "footer": {
+      "updated": "Mis à jour récemment",
+      "built": "Open Source"
+    },
+    "viewMore": "Voir plus sur GitHub"
+  },
+  "experience": {
+    "number": "03.",
+    "title": "Expérience",
+    "command": "git log --author=\"Jules\"",
+    "commitPrefix": "feat: ",
+    "companyPrefix": "@ ",
+    "footer": {
+      "contributions": "Contributions effectuées",
+      "verified": "commit vérifié"
+    },
+    "initialCommit": "Initial commit — Début du parcours de développeur"
+  },
+  "about": {
+    "number": "02.",
+    "title": "À Propos",
+    "fileTab": "about.md",
+    "bio": {
+      "greeting": "# Bonjour le Monde !",
+      "role": "Développeur Full Stack",
+      "location": "Lille, France",
+      "intro": "Je suis un développeur passionné qui aime créer des applications web",
+      "highlight": "évolutives",
+      "outro": "et performantes.",
+      "currentlyWorking": "/* Actuellement en train de travailler sur */",
+      "projects": {
+        "item1": "Plateformes de livraison de nourriture",
+        "item2": "Architecture microservices",
+        "item3": "Expériences mobiles"
+      },
+      "closing1": "// Construisons quelque chose",
+      "closing2": "// d'incroyable ensemble !"
+    },
+    "techStackTitle": "const techStack =",
+    "skills": {
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "database": "Base de données",
+      "devops": "DevOps",
+      "tools": "Outils"
+    }
+  },
+  "contact": {
+    "number": "04.",
+    "title": "Contact",
+    "terminalFile": "contact.sh",
+    "command": "cat ~/contact.json",
+    "json": {
+      "status": "Disponible à l'embauche",
+      "location": "Lille, France",
+      "email": "julesvandeneedepro@gmail.com",
+      "responseTime": "~24h"
+    },
+    "description": "Vous recherchez des opportunités pour construire quelque chose d'incroyable ? Connectons-nous !",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "form": {
+      "header": "new_message.tsx",
+      "labels": {
+        "name": "const name =",
+        "email": "const email =",
+        "message": "const message = `"
+      },
+      "placeholders": {
+        "name": "'Votre Nom'",
+        "email": "'vous@email.com'",
+        "message": "Parlez-moi de votre projet..."
+      },
+      "button": "sendMessage()",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
+      "footer": "// Je vous répondrai dans les 24 heures"
+    }
+  },
+  "footer": {
+    "statusBar": {
+      "ready": "Prêt",
+      "branch": "main",
+      "encoding": "UTF-8",
+      "language": "TypeScript React",
+      "position": "Ln 420, Col 69"
+    },
+    "branding": "// Conçu & Développé par Jules Van Den Eede",
+    "tagline": "Fait avec ❤️ et beaucoup de ☕",
+    "copyright": "© 2026 Jules Van Den Eede. Tous droits réservés."
+  },
+  "notFound": {
+    "terminalFile": "error.sh",
+    "errorCode": "404",
+    "title": "Page Introuvable",
+    "errorMessage": "Error: ENOENT: no such file or directory",
+    "description": "La page que vous recherchez n'existe pas.",
+    "suggestions": {
+      "title": "Suggestions :",
+      "checkUrl": "Vérifiez l'URL pour les fautes de frappe",
+      "goHome": "Retourner à la page d'accueil",
+      "useNav": "Utilisez le menu de navigation"
+    },
+    "buttons": {
+      "home": "cd ~/home",
+      "back": "cd ../"
+    },
+    "footer": "// Si vous pensez qu'il s'agit d'une erreur, veuillez me contacter"
+  },
+  "projectDetail": {
+    "backButton": "Retour aux Projets",
+    "screenshot": "Capture d'écran du Projet",
+    "links": {
+      "title": "Liens du Projet",
+      "demo": "Démo en Direct",
+      "code": "Voir le Code"
+    },
+    "technologies": "Technologies",
+    "notFound": {
+      "title": "Projet Introuvable",
+      "description": "Le projet demandé n'a pas pu être trouvé."
+    }
+  },
+  "api": {
+    "contact": {
+      "success": "Email envoyé avec succès",
+      "validation": "Validation échouée",
+      "error": "Échec de l'envoi de l'email. Veuillez réessayer plus tard."
+    },
+    "github": {
+      "error": "Échec de la récupération des données du dépôt",
+      "missingRepo": "Le paramètre du dépôt est requis"
+    }
+  },
+  "validation": {
+    "name": "Le nom doit contenir au moins 2 caractères",
+    "email": "Adresse email invalide",
+    "message": "Le message doit contenir au moins 10 caractères"
+  }
+}

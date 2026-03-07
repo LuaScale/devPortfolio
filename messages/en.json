@@ -1,0 +1,189 @@
+{
+  "nav": {
+    "logo": "jules@dev:~$",
+    "items": {
+      "projects": "projects",
+      "about": "about",
+      "experience": "experience",
+      "contact": "contact"
+    },
+    "cta": "./hire-me"
+  },
+  "hero": {
+    "terminal": {
+      "title": "~/jules-vandeneede",
+      "command": "whoami",
+      "output": "Jules Van Den Eede — Full Stack Developer"
+    },
+    "comment": "//",
+    "headline": {
+      "part1": "I build ",
+      "highlight": "scalable",
+      "part2": " web experiences"
+    },
+    "description": "Passionate full-stack developer specializing in building exceptional digital experiences. Currently focused on creating scalable web applications with modern technologies.",
+    "status": {
+      "available": "Available for hire",
+      "branch": "main",
+      "language": "TypeScript"
+    },
+    "cta": {
+      "work": "View My Work",
+      "contact": "Get in Touch"
+    }
+  },
+  "projects": {
+    "number": "01.",
+    "title": "Featured Projects",
+    "command": "git log --oneline --graph",
+    "badge": "Public",
+    "buttons": {
+      "source": "View Source",
+      "demo": "Live Demo",
+      "readme": "README.md"
+    },
+    "loading": "—",
+    "footer": {
+      "updated": "Updated recently",
+      "built": "Open Source"
+    },
+    "viewMore": "View more on GitHub"
+  },
+  "experience": {
+    "number": "03.",
+    "title": "Experience",
+    "command": "git log --author=\"Jules\"",
+    "commitPrefix": "feat: ",
+    "companyPrefix": "@ ",
+    "footer": {
+      "contributions": "Contributions made",
+      "verified": "verified commit"
+    },
+    "initialCommit": "Initial commit — Started coding journey"
+  },
+  "about": {
+    "number": "02.",
+    "title": "About Me",
+    "fileTab": "about.md",
+    "bio": {
+      "greeting": "# Hello World!",
+      "role": "Full Stack Developer",
+      "location": "Lille, France",
+      "intro": "I'm a passionate developer who loves building",
+      "highlight": "scalable",
+      "outro": "and performant web applications.",
+      "currentlyWorking": "/* Currently working on */",
+      "projects": {
+        "item1": "Food delivery platforms",
+        "item2": "Microservices architecture",
+        "item3": "Mobile experiences"
+      },
+      "closing1": "// Let's build something",
+      "closing2": "// amazing together!"
+    },
+    "techStackTitle": "const techStack =",
+    "skills": {
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "database": "Database",
+      "devops": "DevOps",
+      "tools": "Tools"
+    }
+  },
+  "contact": {
+    "number": "04.",
+    "title": "Contact",
+    "terminalFile": "contact.sh",
+    "command": "cat ~/contact.json",
+    "json": {
+      "status": "Available for hire",
+      "location": "Lille, France",
+      "email": "julesvandeneedepro@gmail.com",
+      "responseTime": "~24h"
+    },
+    "description": "Looking for opportunities to build something amazing? Let's connect!",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "form": {
+      "header": "new_message.tsx",
+      "labels": {
+        "name": "const name =",
+        "email": "const email =",
+        "message": "const message = `"
+      },
+      "placeholders": {
+        "name": "'Your Name'",
+        "email": "'you@email.com'",
+        "message": "Tell me about your project..."
+      },
+      "button": "sendMessage()",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "footer": "// I'll get back to you within 24 hours"
+    }
+  },
+  "footer": {
+    "statusBar": {
+      "ready": "Ready",
+      "branch": "main",
+      "encoding": "UTF-8",
+      "language": "TypeScript React",
+      "position": "Ln 420, Col 69"
+    },
+    "branding": "// Designed & Built by Jules Van Den Eede",
+    "tagline": "Made with ❤️ and lots of ☕",
+    "copyright": "© 2026 Jules Van Den Eede. All rights reserved."
+  },
+  "notFound": {
+    "terminalFile": "error.sh",
+    "errorCode": "404",
+    "title": "Page Not Found",
+    "errorMessage": "Error: ENOENT: no such file or directory",
+    "description": "The page you're looking for doesn't exist.",
+    "suggestions": {
+      "title": "Suggestions:",
+      "checkUrl": "Check the URL for typos",
+      "goHome": "Return to the homepage",
+      "useNav": "Use the navigation menu"
+    },
+    "buttons": {
+      "home": "cd ~/home",
+      "back": "cd ../"
+    },
+    "footer": "// If you believe this is a mistake, please contact me"
+  },
+  "projectDetail": {
+    "backButton": "Back to Projects",
+    "screenshot": "Project Screenshot",
+    "links": {
+      "title": "Project Links",
+      "demo": "Live Demo",
+      "code": "View Code"
+    },
+    "technologies": "Technologies",
+    "notFound": {
+      "title": "Project Not Found",
+      "description": "The requested project could not be found."
+    }
+  },
+  "api": {
+    "contact": {
+      "success": "Email sent successfully",
+      "validation": "Validation failed",
+      "error": "Failed to send email. Please try again later."
+    },
+    "github": {
+      "error": "Failed to fetch repository data",
+      "missingRepo": "Repository parameter is required"
+    }
+  },
+  "validation": {
+    "name": "Name must be at least 2 characters",
+    "email": "Invalid email address",
+    "message": "Message must be at least 10 characters"
+  }
+}

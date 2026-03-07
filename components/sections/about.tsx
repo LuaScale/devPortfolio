@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { FileCode } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { ABOUT } from "@/lib/constants";
 
 export function About() {
+  const t = useTranslations("about");
   return (
     <section id="about" className="py-20 md:py-32 bg-card/30">
       <Container>
@@ -17,9 +19,9 @@ export function About() {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-primary font-mono text-sm">{ABOUT.sectionNumber}.</span>
+            <span className="text-primary font-mono text-sm">{t("number")}</span>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {ABOUT.title}
+              {t("title")}
             </h2>
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
@@ -38,7 +40,7 @@ export function About() {
               {/* Editor tab */}
               <div className="flex items-center gap-2 px-4 py-2 bg-secondary/50 border-b border-border">
                 <FileCode className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground font-mono">{ABOUT.fileTab}</span>
+                <span className="text-sm text-muted-foreground font-mono">{t("fileTab")}</span>
               </div>
               {/* Content with line numbers */}
               <div className="p-4 font-mono text-sm">
@@ -49,19 +51,19 @@ export function About() {
                     ))}
                   </div>
                   <div className="flex-1 text-muted-foreground leading-relaxed">
-                    <p className="text-[#ff7b72]"># {ABOUT.bio.greeting}</p>
+                    <p className="text-[#ff7b72]">{t("bio.greeting")}</p>
                     <p>&nbsp;</p>
-                    <p>I&apos;m a <span className="text-primary">{ABOUT.bio.role}</span></p>
-                    <p>based in {ABOUT.bio.location}, passionate about</p>
-                    <p>building <span className="text-accent">{ABOUT.bio.passion}</span> applications.</p>
+                    <p>I&apos;m a <span className="text-primary">{t("bio.role")}</span></p>
+                    <p>based in {t("bio.location")}, {t("bio.intro")}</p>
+                    <p><span className="text-accent">{t("bio.highlight")}</span> {t("bio.outro")}</p>
                     <p>&nbsp;</p>
-                    <p className="text-[#8b949e]">{ABOUT.bio.currentWork.title}</p>
-                    {ABOUT.bio.currentWork.items.map((item) => (
-                      <p key={item}>- {item}</p>
-                    ))}
+                    <p className="text-[#8b949e]">{t("bio.currentlyWorking")}</p>
+                    <p>- {t("bio.projects.item1")}</p>
+                    <p>- {t("bio.projects.item2")}</p>
+                    <p>- {t("bio.projects.item3")}</p>
                     <p>&nbsp;</p>
-                    <p className="text-[#8b949e]">{ABOUT.bio.callToAction[0]}</p>
-                    <p className="text-[#8b949e]">{ABOUT.bio.callToAction[1]}</p>
+                    <p className="text-[#8b949e]">{t("bio.closing1")}</p>
+                    <p className="text-[#8b949e]">{t("bio.closing2")}</p>
                   </div>
                 </div>
               </div>
@@ -77,7 +79,7 @@ export function About() {
             className="lg:col-span-3"
           >
             <h3 className="text-lg font-semibold mb-6 text-foreground font-mono">
-              <span className="text-primary">const</span> {ABOUT.techStack.title} <span className="text-muted-foreground">=</span> {"{"}
+              <span className="text-primary">const</span> {t("techStackTitle")} <span className="text-muted-foreground">=</span> {"{"}
             </h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {ABOUT.techStack.categories.map((category, index) => (

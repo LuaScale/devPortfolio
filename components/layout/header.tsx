@@ -1,21 +1,31 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 // eslint-disable-next-line deprecation/deprecation
 import * as lucideReact from "lucide-react";
-import { NAV_ITEMS, NAV_CTA, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 
 export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const t = useTranslations("nav");
+
+  const NAV_ITEMS = [
+    { name: t("items.projects"), href: "/#projects", num: "01" },
+    { name: t("items.about"), href: "/#about", num: "02" },
+    { name: t("items.experience"), href: "/#experience", num: "03" },
+    { name: t("items.contact"), href: "/#contact", num: "04" },
+  ];
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -73,23 +83,24 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <div className="hidden md:flex items-center gap-2">
+              <LanguageSwitcher />
               <ThemeToggle />
               <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary hover:bg-secondary/50">
-                <Link href={SITE.github} target="_blank">
+                <a href={SITE.github} target="_blank" rel="noreferrer">
                   {/* eslint-disable-next-line deprecation/deprecation */}
                   <lucideReact.Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
-                </Link>
+                </a>
               </Button>
               <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary hover:bg-secondary/50">
-                <Link href={SITE.linkedin} target="_blank">
+                <a href={SITE.linkedin} target="_blank" rel="noreferrer">
                   {/* eslint-disable-next-line deprecation/deprecation */}
                   <lucideReact.Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
-                </Link>
+                </a>
               </Button>
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-mono text-sm shadow-[0_0_15px_rgba(74,222,128,0.2)]">
-                <Link href={NAV_CTA.href}>{NAV_CTA.text}</Link>
+                <Link href="/#contact">{t("cta")}</Link>
               </Button>
             </div>
 
@@ -139,21 +150,22 @@ export function Header() {
                   </Link>
                 ))}
                 <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border">
+                  <LanguageSwitcher />
                   <ThemeToggle />
                   <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary">
-                    <Link href="https://github.com/LuaScale" target="_blank">
+                    <a href={SITE.github} target="_blank" rel="noreferrer">
                       {/* eslint-disable-next-line deprecation/deprecation */}
                       <lucideReact.Github className="h-5 w-5" />
-                    </Link>
+                    </a>
                   </Button>
                   <Button variant="ghost" size="icon" asChild className="text-muted-foreground hover:text-primary">
-                    <Link href="https://linkedin.com/in/jules-vandeneede" target="_blank">
+                    <a href={SITE.linkedin} target="_blank" rel="noreferrer">
                       {/* eslint-disable-next-line deprecation/deprecation */}
                       <lucideReact.Linkedin className="h-5 w-5" />
-                    </Link>
+                    </a>
                   </Button>
                   <Button className="flex-1 font-mono" asChild>
-                    <Link href="/#contact">./hire-me</Link>
+                    <Link href="/#contact">{t("cta")}</Link>
                   </Button>
                 </div>
               </nav>

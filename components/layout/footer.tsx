@@ -1,10 +1,13 @@
-import Link from "next/link";
+"use client";
+
 import { Container } from "@/components/ui/container";
 // eslint-disable-next-line deprecation/deprecation
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
-import { FOOTER } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 
 export function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t border-border bg-card/50">
       {/* VS Code-style status bar */}
@@ -14,14 +17,14 @@ export function Footer() {
             <div className="flex items-center gap-4 text-muted-foreground">
               <span className="flex items-center gap-1">
                 <span className="h-2 w-2 rounded-full bg-primary" />
-                <span>{FOOTER.statusBar.status}</span>
+                <span>{t("statusBar.ready")}</span>
               </span>
-              <span className="hidden sm:inline">{FOOTER.statusBar.branch}</span>
-              <span className="hidden md:inline">{FOOTER.statusBar.encoding}</span>
+              <span className="hidden sm:inline">{t("statusBar.branch")}</span>
+              <span className="hidden md:inline">{t("statusBar.encoding")}</span>
             </div>
             <div className="flex items-center gap-4 text-muted-foreground">
-              <span className="hidden sm:inline">{FOOTER.statusBar.language}</span>
-              <span>{FOOTER.statusBar.position}</span>
+              <span className="hidden sm:inline">{t("statusBar.language")}</span>
+              <span>{t("statusBar.position")}</span>
             </div>
           </div>
         </Container>
@@ -33,28 +36,26 @@ export function Footer() {
             {/* Left side - branding */}
             <div className="flex flex-col items-center md:items-start gap-2">
               <p className="text-sm font-mono text-muted-foreground">
-                <span className="text-[#8b949e]">{FOOTER.branding.comment}</span>
-                {FOOTER.branding.text}
-                <Link
-                  href={FOOTER.branding.authorLink}
-                  target="_blank"
-                  className="text-primary hover:text-accent transition-colors"
-                >
-                  {FOOTER.branding.author}
-                </Link>
+                <span className="text-[#8b949e]">{t("branding")}</span>
               </p>
               <p className="text-xs text-muted-foreground/60 font-mono flex items-center gap-1">
-                {FOOTER.tagline.split(' ').map((word) => {
-                  if (word === '❤️') return <Heart key="heart" className="h-3 w-3 text-[#f85149] inline" />;
-                  if (word === '☕') return <span key="coffee" className="text-primary">☕</span>;
-                  return word + ' ';
+                {t("tagline").split(" ").map((word, idx) => {
+                  if (word === "❤️")
+                    return <Heart key="heart" className="h-3 w-3 text-[#f85149] inline" />;
+                  if (word === "☕")
+                    return (
+                      <span key="coffee" className="text-primary">
+                        ☕
+                      </span>
+                    );
+                  return <span key={`word-${word}-${idx}`}>{word} </span>;
                 })}
               </p>
             </div>
 
             {/* Right side - social links */}
             <div className="flex items-center gap-3">
-              <Link
+              <a
                 href="https://github.com/LuaScale"
                 target="_blank"
                 rel="noreferrer"
@@ -63,8 +64,8 @@ export function Footer() {
                 {/* eslint-disable-next-line deprecation/deprecation */}
                 <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
-              </Link>
-              <Link
+              </a>
+              <a
                 href="https://linkedin.com/in/jules-vandeneede"
                 target="_blank"
                 rel="noreferrer"
@@ -73,21 +74,21 @@ export function Footer() {
                 {/* eslint-disable-next-line deprecation/deprecation */}
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link
+              </a>
+              <a
                 href="mailto:julesvandeneedepro@gmail.com"
                 className="h-9 w-9 rounded-md bg-secondary/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
               >
                 <Mail className="h-4 w-4" />
                 <span className="sr-only">Email</span>
-              </Link>
+              </a>
             </div>
           </div>
 
           {/* Copyright */}
           <div className="mt-6 pt-6 border-t border-border text-center">
             <p className="text-xs font-mono text-muted-foreground/60">
-              {FOOTER.copyright}
+              {t("copyright")}
             </p>
           </div>
         </div>

@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ArrowRight, Terminal, GitBranch, Code2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { HERO } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 
 function TypingText({ text, className }: Readonly<{ text: string; className?: string }>) {
   const [displayText, setDisplayText] = useState("");
@@ -41,6 +41,8 @@ function TypingText({ text, className }: Readonly<{ text: string; className?: st
 }
 
 export function Hero() {
+  const t = useTranslations("hero");
+  
   return (
     <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden py-20 md:py-32 bg-background">
       {/* Code-inspired grid background */}
@@ -66,16 +68,16 @@ export function Hero() {
                 <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
                 <span className="h-3 w-3 rounded-full bg-[#27ca40]" />
               </div>
-              <span className="text-xs text-muted-foreground font-mono ml-2">{HERO.terminalTitle}</span>
+              <span className="text-xs text-muted-foreground font-mono ml-2">{t("terminal.title")}</span>
             </div>
             {/* Terminal content */}
             <div className="p-4 font-mono text-sm">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <span className="text-primary">❯</span>
-                <span className="text-[#ff7b72]">{HERO.terminalCommand}</span>
+                <span className="text-[#ff7b72]">{t("terminal.command")}</span>
               </div>
               <div className="mt-2 text-foreground">
-                <TypingText text={HERO.terminalOutput} />
+                <TypingText text={t("terminal.output")} />
               </div>
             </div>
           </motion.div>
@@ -88,11 +90,11 @@ export function Hero() {
             className="mb-6"
           >
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="text-muted-foreground font-mono text-lg md:text-xl block mb-2">{HERO.commentPrefix}</span>
-              {HERO.headline.part1}
-              <span className="text-primary">{HERO.headline.highlight}</span>
+              <span className="text-muted-foreground font-mono text-lg md:text-xl block mb-2">{t("comment")}</span>
+              {t("headline.part1")}
+              <span className="text-primary">{t("headline.highlight")}</span>
               <br />
-              {HERO.headline.part2}
+              {t("headline.part2")}
             </h1>
           </motion.div>
 
@@ -102,7 +104,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg text-muted-foreground sm:text-xl max-w-2xl mb-8"
           >
-            {HERO.description}
+            {t("description")}
           </motion.p>
 
           {/* Status badges */}
@@ -114,15 +116,15 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 rounded-md border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm text-primary">
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />{' '}
-              Available for hire
+              {t("status.available")}
             </div>
             <div className="inline-flex items-center gap-2 rounded-md border border-border bg-secondary/50 px-3 py-1.5 text-sm text-muted-foreground">
               <GitBranch className="h-3.5 w-3.5" />
-              main
+              {t("status.branch")}
             </div>
             <div className="inline-flex items-center gap-2 rounded-md border border-border bg-secondary/50 px-3 py-1.5 text-sm text-muted-foreground">
               <Code2 className="h-3.5 w-3.5" />
-              TypeScript
+              {t("status.language")}
             </div>
           </motion.div>
 
@@ -134,14 +136,14 @@ export function Hero() {
             className="flex flex-col gap-4 sm:flex-row"
           >
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:shadow-[0_0_30px_rgba(74,222,128,0.3)] transition-all" asChild>
-              <Link href={HERO.cta.primary.href}>
+              <Link href="/#projects">
                 <Terminal className="mr-2 h-4 w-4" />
-                {HERO.cta.primary.text}
+                {t("cta.work")}
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-secondary hover:border-primary/50" asChild>
-              <Link href={HERO.cta.secondary.href}>
-                {HERO.cta.secondary.text} <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="/#contact">
+                {t("cta.contact")} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </motion.div>

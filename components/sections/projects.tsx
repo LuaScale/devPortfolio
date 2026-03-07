@@ -8,10 +8,10 @@ import {
   Github, 
   ExternalLink, ArrowRight, GitFork, Star, Folder 
 } from "lucide-react";
-import Link from "next/link";
-import { projects } from "@/lib/data";
+import { Link } from "@/i18n/routing";
+import { projects, getLocalizedData } from "@/lib/data";
 import { useEffect, useState } from "react";
-import { PROJECTS } from "@/lib/constants";
+import { useTranslations, useLocale } from "next-intl";
 
 const tagColors: Record<string, string> = {
   "PHP": "text-[#777bb4]",
@@ -34,6 +34,11 @@ const tagColors: Record<string, string> = {
 
 export function Projects() {
   const [githubStats, setGithubStats] = useState<Record<string, { stars: number; forks: number }>>({});
+  const t = useTranslations("projects");
+  const locale = useLocale();
+
+  // Get localized projects
+  const localizedProjects = projects.map(project => getLocalizedData(project, locale));
 
   useEffect(() => {
     // Fetch GitHub stats for all projects
@@ -65,21 +70,21 @@ export function Projects() {
           className="mb-12 md:mb-16"
         >
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-primary font-mono text-sm">{PROJECTS.sectionNumber}.</span>
+            <span className="text-primary font-mono text-sm">{t("number")}</span>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {PROJECTS.title}
+              {t("title")}
             </h2>
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl font-mono">
-            <span className="text-[#ff7b72]">git log</span> <span className="text-muted-foreground/60">--oneline --graph</span>
+            <span className="text-[#ff7b72]">{t("command")}</span>
           </p>
         </motion.div>
 
         <div className="space-y-6">
-          {projects.map((project, index) => (
+          {localizedProjects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -99,17 +104,17 @@ export function Projects() {
                         </h3>
                       </Link>
                       <span className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
-                        {PROJECTS.repoVisibility}
+                        {t("badge")}
                       </span>
                     </div>
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <div className="flex items-center gap-1 text-xs">
                         <Star className="h-4 w-4" />
-                        <span>{githubStats[project.slug]?.stars ?? PROJECTS.loading.stars}</span>
+                        <span>{githubStats[project.slug]?.stars ?? t("loading")}</span>
                       </div>
                       <div className="flex items-center gap-1 text-xs">
                         <GitFork className="h-4 w-4" />
-                        <span>{githubStats[project.slug]?.forks ?? PROJECTS.loading.forks}</span>
+                        <span>{githubStats[project.slug]?.forks ?? t("loading")}</span>
                       </div>
                     </div>
                   </div>
@@ -120,7 +125,7 @@ export function Projects() {
 
                   {/* Language/Tech tags */}
                   <div className="flex flex-wrap items-center gap-4 mb-4">
-                    {project.tags.map((tag) => (
+                    {project.tags.map((tag: string) => (
                       <div key={tag} className="flex items-center gap-1.5 text-xs">
                         <span className={`h-3 w-3 rounded-full ${tagColors[tag] ? tagColors[tag].replace('text-', 'bg-') : 'bg-muted-foreground'}`} style={{ backgroundColor: /#[a-f0-9]{6}/i.exec(tagColors[tag] || '')?.[0] || undefined }} />
                         <span className="text-muted-foreground">{tag}</span>
@@ -131,21 +136,21 @@ export function Projects() {
                   {/* Action buttons */}
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
                     <Button variant="outline" size="sm" asChild className="border-border hover:border-primary hover:text-primary font-mono text-xs">
-                      <Link href={project.links.repo} target="_blank">
+                      <a href={project.links.repo} target="_blank" rel="noreferrer">
                         {/* eslint-disable-next-line deprecation/deprecation */}
-                        <Github className="mr-2 h-4 w-4" /> {PROJECTS.buttons.viewSource}
-                      </Link>
+                        <Github className="mr-2 h-4 w-4" /> {t("buttons.source")}
+                      </a>
                     </Button>
                     {project.links.demo !== "#" && (
                       <Button size="sm" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-mono text-xs">
-                        <Link href={project.links.demo} target="_blank">
-                          <ExternalLink className="mr-2 h-4 w-4" /> {PROJECTS.buttons.liveDemo}
-                        </Link>
+                        <a href={project.links.demo} target="_blank" rel="noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" /> {t("buttons.demo")}
+                        </a>
                       </Button>
                     )}
                     <Button variant="ghost" size="sm" asChild className="ml-auto hover:text-accent font-mono text-xs">
                       <Link href={`/projects/${project.slug}`}>
-                        {PROJECTS.buttons.readme} <ArrowRight className="ml-2 h-4 w-4" />
+                        {t("buttons.readme")} <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
@@ -154,9 +159,9 @@ export function Projects() {
                 {/* Commit-style footer */}
                 <div className="px-4 md:px-6 py-3 bg-secondary/30 border-t border-border flex items-center gap-4 text-xs text-muted-foreground font-mono">
                   <span className="text-primary">●</span>
-                  <span>Updated recently</span>
+                  <span>{t("footer.updated")}</span>
                   <span className="text-border">|</span>
-                  <span className="text-muted-foreground/60">Built with TypeScript</span>
+                  <span className="text-muted-foreground/60">{t("footer.built")}</span>
                 </div>
               </div>
             </motion.div>
@@ -171,13 +176,14 @@ export function Projects() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <Link 
+          <a 
             href="https://github.com/LuaScale" 
             target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-mono text-sm"
           >
-            View more on GitHub <ArrowRight className="h-4 w-4" />
-          </Link>
+            {t("viewMore")} <ArrowRight className="h-4 w-4" />
+          </a>
         </motion.div>
       </Container>
     </section>

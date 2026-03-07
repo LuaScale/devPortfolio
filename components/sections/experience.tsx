@@ -2,11 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { experiences } from "@/lib/data";
+import { experiences, getLocalizedData } from "@/lib/data";
 import { GitCommit, GitBranch } from "lucide-react";
-import { EXPERIENCE } from "@/lib/constants";
+import { useTranslations, useLocale } from "next-intl";
 
 export function Experience() {
+  const t = useTranslations("experience");
+  const locale = useLocale();
+  const localizedExperiences = experiences.map(exp => getLocalizedData(exp, locale));
   return (
     <section id="experience" className="py-20 md:py-32 bg-card/30">
       <Container>
@@ -18,14 +21,14 @@ export function Experience() {
           className="mb-12 md:mb-16"
         >
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-primary font-mono text-sm">{EXPERIENCE.sectionNumber}.</span>
+            <span className="text-primary font-mono text-sm">{t("number")}</span>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              {EXPERIENCE.title}
+              {t("title")}
             </h2>
             <div className="h-px flex-1 bg-border max-w-xs" />
           </div>
           <p className="text-lg text-muted-foreground font-mono">
-            <span className="text-[#ff7b72]">{EXPERIENCE.gitCommand}</span> <span className="text-muted-foreground/60">{EXPERIENCE.gitAuthor}</span>
+            <span className="text-[#ff7b72]">{t("command")}</span>
           </p>
         </motion.div>
 
@@ -35,9 +38,9 @@ export function Experience() {
           <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-border" />
 
           <div className="space-y-8">
-            {experiences.map((experience, idx) => (
+            {localizedExperiences.map((experience, idx) => (
               <motion.div
-                key={`${experience.company}-${experience.role}`}
+                key={`${experience.company}-${idx}`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -67,10 +70,10 @@ export function Experience() {
                   {/* Commit body */}
                   <div className="p-4">
                     <h3 className="text-lg font-semibold text-foreground mb-1 font-mono">
-                      {EXPERIENCE.commitPrefix}{experience.role}
+                      {t("commitPrefix")}{experience.role}
                     </h3>
                     <p className="text-sm text-primary mb-3">
-                      {EXPERIENCE.companyPrefix}{experience.company}
+                      {t("companyPrefix")}{experience.company}
                     </p>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {experience.description}
