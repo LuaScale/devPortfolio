@@ -20,11 +20,23 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const t = useTranslations("nav");
 
-  const NAV_ITEMS = [
-    { name: t("items.projects"), href: "/#projects", num: "01" },
-    { name: t("items.about"), href: "/#about", num: "02" },
-    { name: t("items.experience"), href: "/#experience", num: "03" },
-    { name: t("items.contact"), href: "/#contact", num: "04" },
+  // Home page = pathname is just the locale segment (e.g. /en or /fr)
+  const pathParts = pathname.split("/").filter(Boolean);
+  const isHome = pathParts.length <= 1;
+
+  // Section anchors — used in mobile menu on home page only
+  const SECTION_ITEMS = [
+    { name: t("items.hero"), href: "#hero", num: "00." },
+    { name: t("items.projects"), href: "#projects", num: "01." },
+    { name: t("items.experience"), href: "#experience", num: "02." },
+    { name: t("items.about"), href: "#about", num: "03." },
+    { name: t("items.contact"), href: "#contact", num: "04." },
+  ];
+
+  // Page-level links — shown in desktop nav + mobile menu on sub-pages
+  const PAGE_LINKS = [
+    { name: t("pages.home"), href: "/", num: "~/" },
+    { name: t("pages.projects"), href: "/projects", num: "~/" },
   ];
 
   React.useEffect(() => {
@@ -62,23 +74,24 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop Nav - numbered items */}
+          {/* Desktop Nav — always show page links */}
           <nav className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "px-4 py-2 text-sm font-mono transition-colors hover:text-primary rounded-md hover:bg-secondary/50",
-                  pathname === item.href
-                    ? "text-primary"
-                    : "text-muted-foreground"
-                )}
-              >
-                <span className="text-primary text-xs mr-1">{item.num}.</span>
-                {item.name}
-              </Link>
-            ))}
+            {PAGE_LINKS.map((item) => {
+              const isActive = pathname.endsWith(item.href) || (item.href === "/" && isHome);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "px-4 py-2 text-sm font-mono transition-colors hover:text-primary rounded-md hover:bg-secondary/50",
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  )}
+                >
+                  <span className="text-[#4ade80]/70 text-xs mr-0.5">{item.num}</span>
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -133,7 +146,8 @@ export function Header() {
           >
             <Container className="py-4 pb-6">
               <nav className="flex flex-col gap-2">
-                {NAV_ITEMS.map((item) => (
+                {/* Home page: show section anchors. Sub-pages: show page links */}
+                {(isHome ? SECTION_ITEMS : PAGE_LINKS).map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -145,7 +159,7 @@ export function Header() {
                     )}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <span className="text-primary text-sm mr-2">{item.num}.</span>
+                    <span className="text-[#4ade80]/70 text-sm mr-2">{item.num}</span>
                     {item.name}
                   </Link>
                 ))}
